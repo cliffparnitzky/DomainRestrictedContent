@@ -28,9 +28,9 @@
  */
 
 /**
- * Add palettes to tl_article
+ * Table tl_article
  */
-$GLOBALS['TL_DCA']['tl_article']['palettes']['default'] = str_replace('{expert_legend:hide}', '{expert_legend:hide},restrictionDomains', $GLOBALS['TL_DCA']['tl_article']['palettes']['default']);
+$GLOBALS['TL_DCA']['tl_article']['config']['onload_callback'][] = array('DomainRestrictedContentDcaHelper', 'extendArticlePalettes');
 
 /**
  * Add fields to tl_article

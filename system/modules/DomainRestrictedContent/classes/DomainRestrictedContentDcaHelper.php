@@ -69,5 +69,41 @@ class DomainRestrictedContentDcaHelper
 		$value = str_replace(',', '.', $value);
 		return $value;
 	}
+	
+	/**
+	 * Extend the DCA palette of the given type
+	 */
+	private static function extendPalette($strTable, $strType)
+	{
+		$GLOBALS['TL_DCA'][$strTable]['palettes'][$strType] = str_replace('{expert_legend:hide}', '{expert_legend:hide},restrictionDomains', $GLOBALS['TL_DCA'][$strTable]['palettes'][$strType]);
+	}
+	
+	/**
+	 * Extend the DCA palette of the given type in tl_article
+	 */
+	public static function extendArticlePalettes($dc)
+	{
+		self::extendPalette('tl_article', 'default');
+	}
+	
+	/**
+	 * Extend the DCA palette of the given type in tl_content
+	 */
+	public static function extendContentPalettes($dc)
+	{
+		$objElement = \ContentModel::findById($dc->id);
+		
+		self::extendPalette('tl_content', $objElement->type);
+	}
+	
+	/**
+	 * Extend the DCA palette of the given type in tl_module
+	 */
+	public static function extendModulePalettes($dc)
+	{
+		$objElement = \ModuleModel::findById($dc->id);
+		
+		self::extendPalette('tl_module', $objElement->type);
+	}
 }
 ?>

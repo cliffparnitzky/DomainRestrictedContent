@@ -28,16 +28,9 @@
  */
 
 /**
- * Add palettes to tl_module
+ * Table tl_module
  */
-foreach ($GLOBALS['TL_DCA']['tl_module']['palettes'] as $key => $palette)
-{
-	if ($key == '__selector__')
-	{
-			continue;
-	}
-	$GLOBALS['TL_DCA']['tl_module']['palettes'][$key] = str_replace('{expert_legend:hide}', '{expert_legend:hide},restrictionDomains', $palette);
-}
+$GLOBALS['TL_DCA']['tl_module']['config']['onload_callback'][] = array('DomainRestrictedContentDcaHelper', 'extendModulePalettes');
 
 /**
  * Add fields to tl_module
