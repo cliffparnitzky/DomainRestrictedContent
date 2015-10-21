@@ -48,9 +48,9 @@ class DomainRestrictedContentHooksImpl
 	public function isVisibleElement($objElement, $blnIsVisible)
 	{
 		$arrRestrictionDomains = deserialize($objElement->restrictionDomains, true);
-		// TODO Abgleich mit aktiven Domains der Einstellungen
 		if ($blnIsVisible && !empty($arrRestrictionDomains))
 		{
+			$arrRestrictionDomains = array_intersect($arrRestrictionDomains, \DomainRestrictedContentDcaHelper::getActiveRestrictionDomains());
 			if (!in_array(\Environment::get('host'), $arrRestrictionDomains))
 			{
 				$blnIsVisible = false;
