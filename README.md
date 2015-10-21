@@ -5,7 +5,7 @@
 Contao Extension: DomainRestrictedContent
 =========================================
 
-Provides the possibility to show/gide content elements, articles and modules on sepcial domains.
+Provides the possibility to show articles, content elements and modules only on specific domains.
 
 
 Installation
