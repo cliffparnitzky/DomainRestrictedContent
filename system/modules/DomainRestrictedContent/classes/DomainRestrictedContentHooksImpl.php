@@ -50,7 +50,7 @@ class DomainRestrictedContentHooksImpl
 		$arrRestrictionDomains = deserialize($objElement->restrictionDomains, true);
 		if ($blnIsVisible && !empty($arrRestrictionDomains))
 		{
-			$arrRestrictionDomains = array_intersect($arrRestrictionDomains, \DomainRestrictedContentDcaHelper::getActiveRestrictionDomains());
+			$arrRestrictionDomains = array_intersect($arrRestrictionDomains, \DomainRestrictedContentDcaHelper::getActiveRestrictionDomains(false));
 			if (!in_array(\Environment::get('host'), $arrRestrictionDomains))
 			{
 				$blnIsVisible = false;

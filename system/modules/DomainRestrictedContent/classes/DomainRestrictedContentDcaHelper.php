@@ -45,15 +45,22 @@ class DomainRestrictedContentDcaHelper
 	/**
 	 * Returns the current defined active domains used for restriction
 	 */
-	public static function getActiveRestrictionDomains()
+	public static function getActiveRestrictionDomains($boolAddInfoMessage=true)
 	{
 		$arrActiveRestrictionDomains = array();
 		$arrRestrictionDomains = deserialize(\Config::get('restrictionDomains'), true);
-		foreach ($arrRestrictionDomains as $domain)
+		if (empty($arrRestrictionDomains) && $boolAddInfoMessage)
 		{
-			if ($domain['active'])
+			\Message::addInfo($GLOBALS['TL_LANG']['MSC']['noRestrictionDomainsDefined']);
+		}
+		else
+		{
+			foreach ($arrRestrictionDomains as $domain)
 			{
-				$arrActiveRestrictionDomains[] = $domain['name'];
+				if ($domain['active'])
+				{
+					$arrActiveRestrictionDomains[] = $domain['name'];
+				}
 			}
 		}
 		return $arrActiveRestrictionDomains;
