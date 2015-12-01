@@ -78,11 +78,26 @@ class DomainRestrictedContentDcaHelper
 	}
 	
 	/**
-	 * Extend the DCA palette of the given type
+	 * Extend the DCA palette of the given type and table
 	 */
 	private static function extendPalette($strTable, $strType)
 	{
 		$GLOBALS['TL_DCA'][$strTable]['palettes'][$strType] = str_replace('{expert_legend:hide}', '{expert_legend:hide},restrictionDomains', $GLOBALS['TL_DCA'][$strTable]['palettes'][$strType]);
+	}
+	
+	/**
+	 * Extend all the DCA palettes of the given table
+	 */
+	private static function extendAllPalettes($strTable)
+	{
+		foreach (array_keys($GLOBALS['TL_DCA'][$strTable]['palettes']) as $palette)
+		{
+			if ($palette == '__selector__')
+			{
+				continue;
+			}
+			self::extendPalette($strTable, $palette);
+		}
 	}
 	
 	/**
@@ -98,9 +113,17 @@ class DomainRestrictedContentDcaHelper
 	 */
 	public static function extendContentPalettes($dc)
 	{
-		$objElement = \ContentModel::findById($dc->id);
+		$strTable = 'tl_content';
+		if (\Input::get('act') == 'editAll')
+		{
+			self::extendAllPalettes($strTable);
+		}
+		else
+		{
+			$objElement = \ContentModel::findById($dc->id);
 		
-		self::extendPalette('tl_content', $objElement->type);
+			self::extendPalette($strTable, $objElement->type);
+		}
 	}
 	
 	/**
@@ -108,9 +131,17 @@ class DomainRestrictedContentDcaHelper
 	 */
 	public static function extendModulePalettes($dc)
 	{
-		$objElement = \ModuleModel::findById($dc->id);
+		$strTable = 'tl_module';
+		if (\Input::get('act') == 'editAll')
+		{
+			self::extendAllPalettes($strTable);
+		}
+		else
+		{
+			$objElement = \ModuleModel::findById($dc->id);
 		
-		self::extendPalette('tl_module', $objElement->type);
+			self::extendPalette($strTable, $objElement->type);
+		}
 	}
 }
 ?>
