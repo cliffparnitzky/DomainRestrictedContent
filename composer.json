@@ -3,7 +3,7 @@
 	"description":"Provides the possibility to show articles, content elements and modules only on specific domains.",
 	"keywords":["contao", "content", "domain restricted"],
 	"type":"contao-module",
-	"license":"LGPL-3.0+",
+	"license":"LGPL-3.0-or-later",
 	"authors":[
 		{
 			"name":"Cliff Parnitzky",
