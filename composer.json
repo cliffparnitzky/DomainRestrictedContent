@@ -1,34 +1,35 @@
 {
-	"name":"cliffparnitzky/domain-restricted-content",
-	"description":"Provides the possibility to show articles, content elements and modules only on specific domains.",
-	"keywords":["contao", "content", "domain restricted"],
-	"type":"contao-module",
-	"license":"LGPL-3.0-or-later",
-	"authors":[
+	"name": "cliffparnitzky/domain-restricted-content",
+	"description": "Provides the possibility to show articles, content elements and modules only on specific domains.",
+	"keywords": [
+		"contao",
+		"content",
+		"domain restricted"
+	],
+	"type": "contao-module",
+	"license": "LGPL-3.0-or-later",
+	"authors": [
 		{
-			"name":"Cliff Parnitzky",
-			"email":"contao@cliff-parnitzky.de",
-			"role":"Developer"
+			"name": "Cliff Parnitzky",
+			"email": "contao@cliff-parnitzky.de",
+			"role": "Developer"
 		}
 	],
-	"support":{
-		"email":"contao@cliff-parnitzky.de",
-		"issues":"https://github.com/cliffparnitzky/DomainRestrictedContent/issues",
-		"source":"https://github.com/cliffparnitzky/DomainRestrictedContent"
+	"support": {
+		"email": "contao@cliff-parnitzky.de",
+		"issues": "https://github.com/cliffparnitzky/DomainRestrictedContent/issues",
+		"source": "https://github.com/cliffparnitzky/DomainRestrictedContent"
 	},
-	"require":{
-		"php":">=5.3",
-		"contao/core-bundle":"~3.2 || ~4.4",
-		"contao-community-alliance/composer-plugin":"~2.4 || ~3.0",
-		"menatwork/contao-multicolumnwizard":"~3.3"
+	"require": {
+		"php": ">=5.3",
+		"contao/core-bundle": "~3.2 || ~4.4",
+		"contao-community-alliance/composer-plugin": "~2.4 || ~3.0",
+		"menatwork/contao-multicolumnwizard": "~3.3"
 	},
-	"conflict": {
-		"contao/core":"3.4.0,3.4.1,3.4.2"
-	},
-	"extra":{
-		"contao":{
-			"sources":{
-				"system/modules/DomainRestrictedContent":"system/modules/DomainRestrictedContent"
+	"extra": {
+		"contao": {
+			"sources": {
+				"system/modules/DomainRestrictedContent": "system/modules/DomainRestrictedContent"
 			}
 		},
 		"branch-alias": {
